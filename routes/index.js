@@ -4,6 +4,7 @@ var notifier = require('./notify');
 var constants = require('./constants');
 var mongoose = require('mongoose');
 var init = require('../app/initialize')();
+var controller = require('../app/controller/mainController')();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,4 +25,18 @@ router.get('/rand', function (req, res, next) {
     console.log("Enter method")
     setTimeout(procedure,1000);
 });
+
+router.get('/hello',function (req, res, next) {
+    console.log("hello");
+    res.send({"res":"hello res"});
+    // res.send("hello res");
+});
+
+router.route('/setTemp').post(controller.configure);
+// router.post('/setTemp', function (req, res, next) {
+//     console.log(req.body);
+//     controller.configure()
+//     res.send({"status": "sucess"});
+// });
+
 module.exports = router;
