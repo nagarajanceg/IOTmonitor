@@ -4,14 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+const http = require('http');
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var app = express();
-
+app.use(session({secret: 'anything-you-want-but-keep-secret'}));
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,7 +34,7 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,5 +58,12 @@ var port = process.env.PORT || 5000;
 app.listen(port, function(){
     console.log("listening port",port);
 });
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
+const response = new MessagingResponse();
+const message = response.message();
+message.body('Hello World!');
+response.redirect('https://demo.twilio.com/welcome/sms/');
+
+console.log(response.toString());
 module.exports = app;

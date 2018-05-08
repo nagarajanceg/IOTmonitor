@@ -1,8 +1,8 @@
 module.exports = {
-    MIN : 200,
-    MAX : 270,
-    NOTIFIER_MIN: 210,
-    NOTIFIER_MAX: 260
+    MIN : 5,
+    MAX : 120,
+    NOTIFIER_MIN: 40,
+    NOTIFIER_MAX: 75
 };
 
 

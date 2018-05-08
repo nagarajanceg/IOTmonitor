@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var settingSchema = new Schema({
+    name:{
+        type: String,
+        required: true
+    },
     state: {
       type: Boolean,
       required: true
@@ -10,7 +14,6 @@ var settingSchema = new Schema({
         type: Number,
         required: true
     },
-
     maxTemp : {
         type: Number,
         required: true

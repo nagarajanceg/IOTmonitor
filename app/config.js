@@ -1,6 +1,7 @@
 var config = {
     db :{
-        url : 'mongodb://localhost/iotmonitor'
+        url : 'mongodb://mongodb-service:27017/iotmonitor'
+        // url : 'mongodb://localhost/iotmonitor'
     }
 }
 
