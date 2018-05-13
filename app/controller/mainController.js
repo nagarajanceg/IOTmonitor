@@ -44,8 +44,8 @@ module.exports = function () {
         if(req.body.Body === "OFF"){
             message += 'Hello, your heater has been stopped. IOT Monitor';
             queryHelper.update({status:false}, function (err,status) {
-                sendResponse(message, res);
                 clearInterval(timeNt);
+                sendResponse(message, res);
             });
 
         }else if(req.body.Body === "ON"){
@@ -55,7 +55,7 @@ module.exports = function () {
                 timeNt = setInterval(procedure,5000);
             });
         }else{
-            message += 'Hello, Provided option is invalid. Could you choose START or STOP. IOT Monitor';
+            message += 'Hello, Provided option is invalid. Could you choose ON or OFF. IOT Monitor';
             sendResponse(message, res);
         }
     };

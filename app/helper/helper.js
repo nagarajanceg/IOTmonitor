@@ -59,7 +59,7 @@ module.exports = function () {
             });
     };
     var getSetting = function (callback) {
-        Setting.find({}, function (err, setting) {
+        Setting.find({name: 'Heater'}, function (err, setting) {
             if(err){
                 console.log("error at get setting");
                 throw err;
